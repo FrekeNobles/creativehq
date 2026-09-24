@@ -1,4 +1,5 @@
-const img = (seed: string, w = 1200, h = 800) => `https://picsum.photos/seed/${seed}/${w}/${h}`;
+// const img = (seed: string, w = 1200, h = 800) => `https://picsum.photos/seed/${seed}/${w}/${h}`;
+const img = (name: string) => `/images/${name}`;
 
 export const projects = [
   {
@@ -7,7 +8,7 @@ export const projects = [
     tags: 'Brand Refresh • Website • Mobile UX • Conversion',
     blurb: 'We restructured the digital presence from an overwhelming catalog into an obvious portfolio. Prospects now immediately understand the bespoke tier of craft, review real before-and-after transformations, and submit qualified quote requests with zero hesitation.',
     points: ['Desktop & Mobile UI Architecture', 'Conversion-Focused Quote CTA Framework', 'Before/After Clarity & Proof Engines'],
-    img: img('chq-local'),
+    img: img('livingarea.avif'),
     client: 'Hartwell Interiors', role: 'Brand, UX, Web Build', timeline: '10 weeks',
     challenge: 'The business had years of excellent work but a website that buried it. Visitors faced a sprawling catalog with no clear path, and most quote requests arrived incomplete or unqualified.',
     approach: [
@@ -23,7 +24,7 @@ export const projects = [
     tags: 'Positioning • UI/UX • Website • Product experience',
     blurb: 'Complex telemetry and pipeline automation tools often lose enterprise buyers within the first 30 seconds. We engineered a minimalist product dashboard and marketing narrative that makes deep analytics intuitively accessible at the boardroom level.',
     points: ['Executive Data Telemetry Visualization', 'Self-Serve Trial Onboarding Journey', 'Modular Design System & Component Kit'],
-    img: img('chq-software'),
+    img: img('pc-screen.avif'),
     client: 'Pulsegrid', role: 'Positioning, Product Design, Frontend', timeline: '14 weeks',
     challenge: 'Pulsegrid’s platform was powerful, but first-time users could not tell what it did or where to start. Demos took an hour, and trials stalled before the first insight.',
     approach: [
@@ -39,7 +40,7 @@ export const projects = [
     tags: 'Brand strategy • Identity • Website • Brand experience',
     blurb: 'For high-ticket advisory firms, credibility is non-negotiable. We stripped away corporate clichés to construct a restrained, authoritative digital identity where thought leadership publications and institutional capabilities command immediate confidence.',
     points: ['Executive Thought Leadership Framework', 'Multi-Jurisdiction Advisory Portal', 'Direct Partner Inquiry Protocol'],
-    img: img('chq-advisory'),
+    img: img('chlothingstore.avif'),
     client: 'Marlowe & Stein Advisory', role: 'Brand Strategy, Identity, Web', timeline: '12 weeks',
     challenge: 'The firm advised on cross-border deals but looked like every other consultancy online. Partners were spending discovery calls proving credentials that the website should have established.',
     approach: [

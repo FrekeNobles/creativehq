@@ -63,7 +63,7 @@ export default function Home() {
           </div>
         </div>
        <div className="relative h-[420px] overflow-hidden rounded-tl-[80px] border-l-4 border-t-4 border-orange sm:h-[560px] lg:mt-28 lg:h-[740px] lg:rounded-tl-[180px]"> 
-        <img src={picture("chq-hero", 900, 1200)} alt="Designer working on a laptop" className="h-full w-full object-cover" /> 
+        <img src="images/heroimage.png" alt="Designer working on a laptop" className="h-full w-full object-cover" /> 
         <div className="absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-t from-[#FAF8F4] via-white/75 to-transparent" /> 
       </div>
       </section>
