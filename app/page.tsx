@@ -58,17 +58,18 @@ export default function Home() {
             We help ambitious businesses build stronger brands, clearer websites and high-converting digital products — backed by strategy, user experience and rigorous commercial thinking.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="#work" className="flex items-center gap-3 rounded-full bg-orange py-2 pl-6 pr-2 text-sm font-bold text-white">View Selected Work <ArrowDot dark /></Link>
-            <Link href="#contact" className="flex items-center gap-2 rounded-full border border-black/15 bg-white px-6 py-3 text-sm font-bold">Start a conversation <ArrowUpRight size={14} /></Link>
+            <Link href="#work" className="flex items-center gap-3 rounded-full bg-orange py-2 pl-6 pr-2 text-sm font-bold text-white transition-all duration-300 hover:gap-4 ">View Selected Work <ArrowDot dark /></Link>
+            <Link href="#contact" className="flex items-center gap-2 rounded-full border border-black/15 bg-white px-6 py-3 text-sm font-bold transition-all duration-300 hover:gap-4 ">Start a conversation <ArrowUpRight size={14} className='text-orange' /></Link>
           </div>
         </div>
-        <div className="h-[420px] overflow-hidden rounded-tl-[80px] sm:h-[560px] lg:h-[780px] lg:rounded-tl-[180px]">
-          <img src={picture('chq-hero', 900, 1200)} alt="Designer working on a laptop" className="h-full w-full object-cover" />
-        </div>
+       <div className="relative h-[420px] overflow-hidden rounded-tl-[80px] border-l-4 border-t-4 border-orange sm:h-[560px] lg:mt-28 lg:h-[740px] lg:rounded-tl-[180px]"> 
+        <img src={picture("chq-hero", 900, 1200)} alt="Designer working on a laptop" className="h-full w-full object-cover" /> 
+        <div className="absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-t from-[#FAF8F4] via-white/75 to-transparent" /> 
+      </div>
       </section>
 
       {/* Stats */}
-      <section className="wrap relative z-10 -mt-12 grid grid-cols-2 gap-6 rounded-3xl border border-sun-line bg-sun p-6 lg:-mt-20 lg:grid-cols-4 lg:p-8">
+      <section className="wrap relative z-10 -mt-12 grid grid-cols-2 gap-6 rounded-3xl border border-orange bg-sun p-6 lg:-mt-20 lg:grid-cols-4 lg:p-8">
         {stats.map(([Icon, n, l]) => (
           <div key={l} className="flex flex-col items-center text-center">
             <span className="grid h-9 w-9 place-items-center rounded-full bg-white text-orange"><Icon size={16} /></span>
@@ -83,7 +84,7 @@ export default function Home() {
         <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl">What We Do</h2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {services.map(([Icon, t, d, tag], i) => (
-            <div key={t} className="flex flex-col rounded-2xl border border-white/10 bg-purple-light/60 p-5">
+            <div key={t} className="flex flex-col rounded-2xl transition-all duration-300 hover:scale-[103.5%] border border-white/10 bg-purple-light/60 p-5">
               <div className="relative flex items-center justify-center">
                 <span className="absolute left-0 grid h-5 w-8 place-items-center rounded-r-lg bg-[#FFFDB4] text-xs font-bold text-orange">
                   0{i + 1}
@@ -173,7 +174,7 @@ export default function Home() {
 })}
         </div>
         <div className="mt-10 flex justify-center">
-          <Link href="#work" className="flex items-center gap-3 rounded-full bg-orange py-2 pl-6 pr-2 text-sm font-bold text-white">View More Of Our Projects <ArrowDot dark /></Link>
+          <Link href="#work" className="flex items-center gap-3 rounded-full bg-orange py-2 pl-6 pr-2 text-sm font-bold text-white transition-all duration-300 hover:gap-4 ">View More Of Our Projects <ArrowDot dark /></Link>
         </div>
       </section>
 
@@ -195,7 +196,7 @@ export default function Home() {
           {questions.map(([t, d, tag], i) => (
             <div
               key={t}
-              className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.06] p-4"
+              className="flex flex-col rounded-2xl transition-all duration-300 hover:scale-[103.5%] border border-white/10 bg-white/[0.06] p-4"
             >
               <span className="text-3xl font-extrabold text-[#FFFDB4] lg:text-center">
                 0{i + 1}
