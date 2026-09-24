@@ -4,6 +4,8 @@ import type { LucideIcon } from 'lucide-react';
 import { Award, ThumbsUp, Star, Globe, Compass, LayoutGrid, TrendingUp, Code2, ArrowRight, ArrowUpRight, CheckCircle2, Target, Search, Mail, Zap } from 'lucide-react';
 import { projects, picture } from '@/lib/data';
 
+
+
 const stats: [LucideIcon, string, string][] = [
   [Award, '5+', 'Years Experience'], [ThumbsUp, '120+', 'Projects Completed'], [Star, '98%', 'Client Satisfaction'], [Globe, '8+', 'Countries Worked'],
 ];
@@ -56,17 +58,18 @@ export default function Home() {
             We help ambitious businesses build stronger brands, clearer websites and high-converting digital products — backed by strategy, user experience and rigorous commercial thinking.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="#work" className="flex items-center gap-3 rounded-full bg-orange py-2 pl-6 pr-2 text-sm font-bold text-white">View Selected Work <ArrowDot dark /></Link>
-            <Link href="#contact" className="flex items-center gap-2 rounded-full border border-black/15 bg-white px-6 py-3 text-sm font-bold">Start a conversation <ArrowUpRight size={14} /></Link>
+            <Link href="#work" className="flex items-center gap-3 rounded-full bg-orange py-2 pl-6 pr-2 text-sm font-bold text-white transition-all duration-300 hover:gap-4 ">View Selected Work <ArrowDot dark /></Link>
+            <Link href="#contact" className="flex items-center gap-2 rounded-full border border-black/15 bg-white px-6 py-3 text-sm font-bold transition-all duration-300 hover:gap-4 ">Start a conversation <ArrowUpRight size={14} className='text-orange' /></Link>
           </div>
         </div>
-        <div className="h-[420px] overflow-hidden rounded-tl-[80px] sm:h-[560px] lg:h-[780px] lg:rounded-tl-[180px]">
-          <img src={picture('chq-hero', 900, 1200)} alt="Designer working on a laptop" className="h-full w-full object-cover" />
-        </div>
+       <div className="relative h-[420px] overflow-hidden rounded-tl-[80px] border-l-4 border-t-4 border-orange sm:h-[560px] lg:mt-28 lg:h-[740px] lg:rounded-tl-[180px]"> 
+        <img src={picture("chq-hero", 900, 1200)} alt="Designer working on a laptop" className="h-full w-full object-cover" /> 
+        <div className="absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-t from-[#FAF8F4] via-white/75 to-transparent" /> 
+      </div>
       </section>
 
       {/* Stats */}
-      <section className="wrap relative z-10 -mt-12 grid grid-cols-2 gap-6 rounded-3xl border border-sun-line bg-sun p-6 lg:-mt-20 lg:grid-cols-4 lg:p-8">
+      <section className="wrap relative z-10 -mt-12 grid grid-cols-2 gap-6 rounded-3xl border border-orange bg-sun p-6 lg:-mt-20 lg:grid-cols-4 lg:p-8">
         {stats.map(([Icon, n, l]) => (
           <div key={l} className="flex flex-col items-center text-center">
             <span className="grid h-9 w-9 place-items-center rounded-full bg-white text-orange"><Icon size={16} /></span>
@@ -81,14 +84,19 @@ export default function Home() {
         <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl">What We Do</h2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {services.map(([Icon, t, d, tag], i) => (
-            <div key={t} className="flex flex-col rounded-2xl border border-white/10 bg-purple-light/60 p-5">
-              <div className="flex items-center justify-between">
-                <span className="grid h-8 w-8 place-items-center rounded-lg bg-orange/20 text-xs font-bold text-orange">0{i + 1}</span>
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-orange/15 text-orange"><Icon size={18} /></span>
-              </div>
+            <div key={t} className="flex flex-col rounded-2xl transition-all duration-300 hover:scale-[103.5%] border border-white/10 bg-purple-light/60 p-5">
+              <div className="relative flex items-center justify-center">
+                <span className="absolute left-0 grid h-5 w-8 place-items-center rounded-r-lg bg-[#FFFDB4] text-xs font-bold text-orange">
+                  0{i + 1}
+                </span>
+
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-orange/15 text-orange">
+                  <Icon size={18} />
+                </span>
+            </div>
               <h3 className="mt-8 text-lg font-bold text-white">{t}</h3>
               <p className="mt-3 flex-1 text-[13px] leading-relaxed text-white/70">{d}</p>
-              <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4 text-xs font-semibold text-white/80">{tag}<ArrowDot /></div>
+              <div className="mt-6 flex items-center justify-center border-t border-white/10 pt-4 text-xs font-semibold text-white/80">{tag}</div>
             </div>
           ))}
         </div>
@@ -99,53 +107,125 @@ export default function Home() {
         <h2 className={h2}>Selected Projects</h2>
         <div className="mt-10 space-y-8">
           {projects.map((p, i) => {
-            const flip = i === 1;
-            return (
-              <article key={p.slug} className="grid items-center gap-8 rounded-3xl border border-black/10 bg-white p-6 sm:p-8 lg:grid-cols-2 lg:gap-14 lg:p-12">
-                <div className={flip ? 'lg:order-2' : ''}>
-                  <h3 className="text-[26px] font-extrabold leading-tight tracking-tight sm:text-[30px]">{p.title}</h3>
-                  <p className="mt-3 text-xs font-semibold text-orange">{p.tags}</p>
-                  <p className="mt-4 text-[14px] leading-relaxed text-ink/65">{p.blurb}</p>
-                  <ul className="mt-6 space-y-3 rounded-xl bg-cream p-4">
-                    {p.points.map((x) => (
-                      <li key={x} className="flex items-center gap-2 text-[13px] font-semibold"><CheckCircle2 size={16} className="shrink-0 text-orange" />{x}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className={flip ? 'lg:order-1' : ''}>
-                  <div className="rounded-2xl bg-black/[0.04] p-4">
-                    <img src={p.img} alt={p.title} className="aspect-[4/3] w-full rounded-xl object-cover" />
-                  </div>
-                  <div className={`mt-4 flex ${flip ? 'justify-start' : 'justify-end'}`}>
-                    <Link href={`/work/${p.slug}`} className="flex items-center gap-2 text-sm font-bold text-purple">View Case Study <ArrowRight size={14} className="text-orange" /></Link>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+  const flip = i === 1;
+
+  return (
+    <article
+      key={p.slug}
+      className="group grid items-center gap-8 rounded-3xl border border-black/10 bg-white p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-black/15 hover:shadow-[0_18px_45px_rgba(0,0,0,0.08)] sm:p-8 lg:grid-cols-2 lg:gap-14 lg:p-12"
+    >
+      <div className={flip ? "lg:order-2" : ""}>
+        <h3 className="text-[26px] font-extrabold leading-tight tracking-tight sm:text-[30px]">
+          {p.title}
+        </h3>
+
+        <p className="mt-3 text-xs font-semibold text-orange">
+          {p.tags}
+        </p>
+
+        <p className="mt-4 text-[14px] leading-relaxed text-ink/65">
+          {p.blurb}
+        </p>
+
+        <ul className="mt-6 space-y-3 rounded-xl bg-cream p-4">
+          {p.points.map((x) => (
+            <li
+              key={x}
+              className="flex items-center gap-2 text-[13px] font-semibold"
+            >
+              <CheckCircle2
+                size={16}
+                className="shrink-0 text-orange"
+              />
+              {x}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className={flip ? "lg:order-1" : ""}>
+        <div className="overflow-hidden rounded-2xl bg-black/[0.04] p-4">
+          <img
+            src={p.img}
+            alt={p.title}
+            className="aspect-[4/3] w-full rounded-xl object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
+          />
+        </div>
+
+        <div
+          className={`mt-4 flex ${
+            flip ? "justify-start" : "justify-end"
+          }`}
+        >
+          <Link
+            href={`/work/${p.slug}`}
+            className="flex items-center gap-2 text-sm font-bold text-purple transition-all duration-300 hover:gap-3"
+          >
+            View Case Study
+            <ArrowRight
+              size={14}
+              className="text-orange transition-transform duration-300 group-hover:translate-x-0.5"
+            />
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+})}
         </div>
         <div className="mt-10 flex justify-center">
-          <Link href="#work" className="flex items-center gap-3 rounded-full bg-orange py-2 pl-6 pr-2 text-sm font-bold text-white">View More Of Our Projects <ArrowDot dark /></Link>
+          <Link href="#work" className="flex items-center gap-3 rounded-full bg-orange py-2 pl-6 pr-2 text-sm font-bold text-white transition-all duration-300 hover:gap-4 ">View More Of Our Projects <ArrowDot dark /></Link>
         </div>
       </section>
 
-      {/* Good design */}
-      <section id="about" className="wrap mt-20 rounded-[28px] bg-purple p-6 sm:p-10 lg:mt-28 lg:p-14">
-        <h2 className={`${h2} max-w-[520px] text-white`}>Good design should do more than look good</h2>
-        <p className="mt-5 max-w-[520px] text-sm text-white/70">Before we design anything, we ask the questions that make the work matter commercially and emotionally.</p>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Process */}
+      <section
+        id="about"
+        className="wrap mt-20 rounded-[28px] bg-purple p-6 sm:p-8 lg:mt-28 lg:p-10"
+      >
+        <h2 className={`${h2} max-w-[520px] text-white`}>
+          Good design should do more than look good
+        </h2>
+
+        <p className="mt-3 max-w-[520px] text-sm text-white/70">
+          Before we design anything, we ask the questions that make the work matter
+          commercially and emotionally.
+        </p>
+
+        <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {questions.map(([t, d, tag], i) => (
-            <div key={t} className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.06] p-5">
-              <span className="text-4xl font-extrabold text-white">0{i + 1}</span>
-              <h3 className="mt-4 font-bold text-white">{t}</h3>
-              <p className="mt-2 flex-1 text-[13px] leading-relaxed text-white/65">{d}</p>
-              <p className="mt-5 border-t border-white/10 pt-3 text-[11px] font-semibold text-white/50">{tag}</p>
+            <div
+              key={t}
+              className="flex flex-col rounded-2xl transition-all duration-300 hover:scale-[103.5%] border border-white/10 bg-white/[0.06] p-4"
+            >
+              <span className="text-3xl font-extrabold text-[#FFFDB4] lg:text-center">
+                0{i + 1}
+              </span>
+
+              <h3 className="mt-3 font-bold text-white">
+                {t}
+              </h3>
+
+              <p className="mt-1.5 flex-1 text-[12px] leading-relaxed text-white/65">
+                {d}
+              </p>
+
+              <p className="mt-4 border-t border-white/10 pt-2.5 text-center text-[10px] font-semibold text-white/50">
+                {tag}
+              </p>
             </div>
           ))}
         </div>
-        <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-[11px] font-semibold uppercase tracking-widest text-white/70">
+
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-[10px] font-semibold uppercase tracking-widest text-white/70">
           <span className="text-orange">Systematic Pipeline:</span>
-          {['Research', 'Strategy', 'Design', 'Build', 'Grow'].map((s, i) => <span key={s}>{i > 0 && <span className="mr-3 text-white/30">›</span>}{s}</span>)}
+
+          {["Research", "Strategy", "Design", "Build", "Grow"].map((s, i) => (
+            <span key={s}>
+              {i > 0 && <span className="mr-3 text-white/30">›</span>}
+              {s}
+            </span>
+          ))}
         </div>
       </section>
 
@@ -195,13 +275,40 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section id="contact" className="wrap mt-20 rounded-[28px] bg-orange p-8 text-white sm:p-12 lg:mt-28 lg:p-16">
-        <p className="text-xs font-semibold text-white/80">Let&apos;s Work Together</p>
-        <h2 className="mt-3 max-w-[640px] text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">Have a project in mind? Let&apos;s create something <span className="text-night">bold</span></h2>
-        <p className="mt-5 max-w-[520px] text-sm leading-relaxed text-white/85">Whether you need a stronger brand, a better website or a clearer path to customers, let&apos;s talk about what you&apos;re trying to achieve.</p>
-        <div className="mt-8 flex flex-wrap items-center gap-4">
-          <a href="mailto:hello@creativehq.com" className="flex items-center gap-3 rounded-full bg-purple py-2 pl-6 pr-2 text-sm font-bold">Let&apos;s Discuss Your Project <ArrowDot /></a>
-          <span className="text-xs text-white/85">Typical response in less than 24 hours</span>
+      <section
+        id="contact"
+        className="wrap mt-20 rounded-[28px] bg-orange p-7 text-white sm:p-10 lg:mt-28 lg:p-12"
+      >
+        <div className="relative z-10 flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
+          <div>
+            <p className="text-xs font-semibold text-white/80">
+              Let&apos;s Work Together
+            </p>
+
+            <h2 className="mt-3 max-w-[640px] text-4xl font-extrabold leading-[0.95] tracking-tight sm:text-5xl lg:text-6xl">
+              Have a project in mind? Let&apos;s create{" "}
+              <span className="text-night">something bold</span>
+            </h2>
+
+            <p className="mt-5 max-w-[520px] text-sm leading-relaxed text-white/85">
+              Whether you need a stronger brand, a better website or a clearer path
+              to customers, let&apos;s talk about what you&apos;re trying to achieve.
+            </p>
+          </div>
+
+          <div className="flex shrink-0 flex-col items-start gap-3 sm:items-end">
+            <a
+              href="mailto:hello@creativehq.com"
+              className="flex w-fit items-center gap-3 rounded-full bg-purple py-2 pl-6 pr-2 text-sm font-bold transition-all duration-300 hover:gap-4"
+            >
+              Let&apos;s Discuss Your Project
+              <ArrowDot />
+            </a>
+
+            <span className="text-xs text-white/85">
+              Typical response in less than 24 hours
+            </span>
+          </div>
         </div>
       </section>
     </main>
