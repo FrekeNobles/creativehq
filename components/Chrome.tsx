@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 
 const links = [['Home', '/'], ['Services', '/#services'], ['Work', '/#work'], ['About Us', '/#about'], ['Contact', '/#contact']];
@@ -18,28 +18,91 @@ export function Logo({ light = false }: { light?: boolean }) {
 export function Nav() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
-  const active = path === '/' ? 'Home' : path.startsWith('/work') ? 'Work' : '';
-  const cls = (l: string) => `rounded-full px-4 py-2 text-[13px] font-semibold ${active === l ? 'bg-orange text-white' : 'text-ink/70 hover:text-ink'}`;
+  const [hash, setHash] = useState('');
+
+  useEffect(() => {
+    setHash(window.location.hash);
+  }, [path]);
+
+  const active =
+    path !== '/'
+      ? ''
+      : hash === '#services'
+        ? 'Services'
+        : hash === '#work'
+          ? 'Work'
+           : hash === 'work'
+            ? 'Work'
+            : hash === '#about'
+              ? 'About Us'
+              : hash === '#contact'
+                ? 'Contact'
+                : 'Home';
+
+  const cls = (l: string) =>
+    `rounded-full px-4 py-2 text-[13px] font-semibold ${
+      active === l
+        ? 'bg-orange text-white'
+        : 'text-ink/70 hover:text-ink'
+    }`;
+
+  const handleNavClick = (label: string, href: string) => {
+    setHash(href.includes('#') ? href.substring(href.indexOf('#')) : '');
+    setOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-50 px-5 pt-4">
       <div className="mx-auto flex max-w-[1130px] items-center justify-between rounded-full border border-black/10 bg-white/90 py-2 pl-4 pr-2 shadow-sm backdrop-blur">
         <Logo />
+
         <nav className="hidden items-center gap-1 rounded-full bg-cream p-1 lg:flex">
-          {links.map(([l, h]) => <Link key={l} href={h} className={cls(l)}>{l}</Link>)}
+          {links.map(([l, h]) => (
+            <Link
+              key={l}
+              href={h}
+              onClick={() => handleNavClick(l, h)}
+              className={cls(l)}
+            >
+              {l}
+            </Link>
+          ))}
         </nav>
+
         <div className="flex items-center gap-2">
-          <Link href="/#contact" className="flex items-center gap-2 rounded-full bg-purple py-2 pl-5 pr-2 text-[13px] font-bold text-white">
+          <Link
+            href="/#contact"
+            onClick={() => setHash('#contact')}
+            className="flex items-center gap-2 rounded-full bg-purple py-2 pl-5 pr-2 text-[13px] font-bold text-white"
+          >
             Let&apos;s Talk
-            <span className="grid h-7 w-7 place-items-center rounded-full bg-orange"><ArrowUpRight size={14} /></span>
+            <span className="grid h-7 w-7 place-items-center rounded-full bg-orange">
+              <ArrowUpRight size={14} />
+            </span>
           </Link>
-          <button aria-label="Menu" onClick={() => setOpen(!open)} className="grid h-10 w-10 place-items-center rounded-full bg-cream lg:hidden">
+
+          <button
+            aria-label="Menu"
+            onClick={() => setOpen(!open)}
+            className="grid h-10 w-10 place-items-center rounded-full bg-cream lg:hidden"
+          >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
+
       {open && (
         <nav className="mx-auto mt-2 flex max-w-[1130px] flex-col rounded-3xl border border-black/10 bg-white p-2 lg:hidden">
-          {links.map(([l, h]) => <Link key={l} href={h} onClick={() => setOpen(false)} className={cls(l) + ' py-3'}>{l}</Link>)}
+          {links.map(([l, h]) => (
+            <Link
+              key={l}
+              href={h}
+              onClick={() => handleNavClick(l, h)}
+              className={cls(l) + ' py-3'}
+            >
+              {l}
+            </Link>
+          ))}
         </nav>
       )}
     </header>
@@ -68,7 +131,7 @@ export function Footer() {
         <div>
           <h4 className="text-xs font-bold uppercase tracking-widest text-white/50">Direct Contact</h4>
           <p className="mt-4 text-sm leading-relaxed text-white/80">Initiate an executive strategic review or RFP discussion.</p>
-          <a href="mailto:hello@creativehq.com" className="mt-3 inline-block text-sm font-semibold text-orange">hello@creativehq.com</a>
+          <a href="mailto:creativehq@gmail.com" className="mt-3 inline-block text-sm font-semibold text-orange">creativehq@gmail.com</a>
         </div>
       </div>
       <div className="mx-auto flex max-w-[1186px] flex-col gap-3 border-t border-white/10 px-5 py-6 text-xs text-white/50 sm:flex-row sm:justify-between">

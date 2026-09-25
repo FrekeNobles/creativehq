@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { projects, picture } from '@/lib/data';
 
 export function generateStaticParams() {
@@ -48,7 +48,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Our approach</h2>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {p.approach.map((a, n) => (
-            <div key={a.t} className="rounded-2xl border border-black/10 bg-white p-6">
+            <div key={a.t} className="rounded-2xl border border-black/10 bg-white p-6 transition-all duration-300 hover:scale-[103.5%] ">
               <span className="text-3xl font-extrabold text-orange">0{n + 1}</span>
               <h3 className="mt-4 font-bold">{a.t}</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-ink/60">{a.d}</p>
@@ -87,6 +87,19 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           </div>
           <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-orange text-white transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
         </Link>
+      </section>
+
+      <section className="container  wrap mt-16 lg:mt-24">
+        <div className="rounded-2xl bg-orange p-7 text-white sm:p-10 md:p-12">
+          <p className="text-[10px] font-bold uppercase tracking-[.15em] text-white/60">Have a similar problem?</p>
+          <div className="mt-3 flex flex-col justify-between gap-7 sm:flex-row sm:items-end">
+            <h2 className="display max-w-2xl text-4xl font-bold leading-[.92] sm:text-5xl">Let&apos;s build the digital experience your business needs.</h2>
+            <a href="mailto:creativehq@gmail.com" className="inline-flex w-fit items-center gap-2 rounded-full bg-purple px-5 py-3 text-[11px] font-bold transition-all duration-300 hover:gap-4">
+          Start a conversation 
+          <ArrowUpRight size={13} />
+          </a>
+          </div>
+        </div>
       </section>
     </main>
   );

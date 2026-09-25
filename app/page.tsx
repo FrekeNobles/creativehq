@@ -298,7 +298,7 @@ export default function Home() {
 
           <div className="flex shrink-0 flex-col items-start gap-3 sm:items-end">
             <a
-              href="mailto:hello@creativehq.com"
+              href="mailto:creativehq@gmail.com"
               className="flex w-fit items-center gap-3 rounded-full bg-purple py-2 pl-6 pr-2 text-sm font-bold transition-all duration-300 hover:gap-4"
             >
               Let&apos;s Discuss Your Project
