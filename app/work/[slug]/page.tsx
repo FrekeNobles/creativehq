@@ -32,7 +32,11 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             <div key={k}><dt className="text-xs font-semibold text-ink/50">{k}</dt><dd className="mt-1 font-bold">{v}</dd></div>
           ))}
         </dl>
-        <img src={picture(`${p.slug}-hero`, 1600, 900)} alt={p.title} className="mt-10 aspect-[16/9] w-full rounded-3xl object-cover" />
+        <img
+  src={p.caseStudyImages.hero}
+  alt={p.title}
+  className="mt-10 aspect-[16/9] w-full rounded-3xl object-cover"
+/>
       </section>
 
       <section className="wrap mt-16 grid gap-8 lg:mt-24 lg:grid-cols-[1fr_2fr] lg:gap-16">
@@ -52,8 +56,15 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           ))}
         </div>
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
-          {[2, 3].map((n) => <img key={n} src={picture(`${p.slug}-${n}`, 1000, 700)} alt="" className="aspect-[10/7] w-full rounded-2xl object-cover" />)}
-        </div>
+  {p.caseStudyImages.secondary.map((image) => (
+    <img
+      key={image}
+      src={image}
+      alt=""
+      className="aspect-[10/7] w-full rounded-2xl object-cover"
+    />
+  ))}
+</div>
       </section>
 
       <section className="wrap mt-16 rounded-[28px] bg-purple p-8 text-white sm:p-12 lg:mt-24 lg:p-14">
