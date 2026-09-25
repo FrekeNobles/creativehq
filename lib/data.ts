@@ -10,13 +10,13 @@ export const projects = [
     points: ['Desktop & Mobile UI Architecture', 'Conversion-Focused Quote CTA Framework', 'Before/After Clarity & Proof Engines'],
     img: img('chlothingstore.avif'),
     caseStudyImages: {
-      hero: img('chlothingstore-hero.avif'),
+      hero: img('chlothing-store-hero.jpg'),
       secondary: [
-        img('chlothingstore-2.avif'),
-        img('chlothingstore-3.avif'),
+        img('chlothing-store-1.jpg'),
+        img('chlothingstore-2.png'),
     ],
   },
-    client: 'Hartwell Interiors', role: 'Brand, UX, Web Build', timeline: '10 weeks',
+    client: 'Hartwell Fashion', role: 'Brand, UX, Web Build', timeline: '3 weeks',
     challenge: 'The business had years of excellent work but a website that buried it. Visitors faced a sprawling catalog with no clear path, and most quote requests arrived incomplete or unqualified.',
     approach: [
       { t: 'Clarify the offer', d: 'We audited every service and page, then reduced the catalog to three clear packages with plain-language outcomes.' },
@@ -33,10 +33,10 @@ export const projects = [
     points: ['Executive Data Telemetry Visualization', 'Self-Serve Trial Onboarding Journey', 'Modular Design System & Component Kit'],
     img: img('pc-screen.avif'),
     caseStudyImages: {
-      hero: img('pc-screen-hero.avif'),
+      hero: img('pc-screen.avif'),
       secondary: [
-        img('pc-screen-2.avif'),
-        img('pc-screen-3.avif'),
+        img('pc-screen-2.png'),
+        img('pc-screen-1.jpg'),
       ],
   },
     client: 'Pulsegrid', role: 'Positioning, Product Design, Frontend', timeline: '14 weeks',
@@ -56,10 +56,10 @@ export const projects = [
     points: ['Executive Thought Leadership Framework', 'Multi-Jurisdiction Advisory Portal', 'Direct Partner Inquiry Protocol'],
     img: img('livingarea.avif'),
     caseStudyImages: {
-      hero: img('livingarea-hero.avif'),
+      hero: img('livingarea.avif'),
       secondary: [
-        img('livingarea-2.avif'),
-        img('livingarea-3.avif'),
+        img('office-1.png'),
+        img('office-2.png'),
       ],
   },
     client: 'Marlowe & Stein Advisory', role: 'Brand Strategy, Identity, Web', timeline: '12 weeks',
