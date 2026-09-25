@@ -59,7 +59,7 @@ export default function Home() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="#work" className="flex items-center gap-3 rounded-full bg-orange py-2 pl-6 pr-2 text-sm font-bold text-white transition-all duration-300 hover:gap-4 ">View Selected Work <ArrowDot dark /></Link>
-            <Link href="#contact" className="flex items-center gap-2 rounded-full border border-black/15 bg-white px-6 py-3 text-sm font-bold transition-all duration-300 hover:gap-4 ">Start a conversation <ArrowUpRight size={14} className='text-orange' /></Link>
+            <Link href="#contact" className="flex items-center gap-2 rounded-full border border-black/15 bg-white px-6 py-2 text-sm font-bold transition-all duration-300 hover:gap-4 ">Start a conversation <ArrowUpRight size={14} className='text-orange' /></Link>
           </div>
         </div>
        <div className="relative h-[420px] overflow-hidden rounded-tl-[80px] border-l-4 border-t-4 border-orange sm:h-[560px] lg:mt-28 lg:h-[740px] lg:rounded-tl-[180px]"> 
@@ -173,9 +173,27 @@ export default function Home() {
   );
 })}
         </div>
-        <div className="mt-10 flex justify-center">
-          <Link href="#work" className="flex items-center gap-3 rounded-full bg-orange py-2 pl-6 pr-2 text-sm font-bold text-white transition-all duration-300 hover:gap-4 ">View More Of Our Projects <ArrowDot dark /></Link>
-        </div>
+        <div className="mx-auto mt-10 flex w-full max-w-[600px] flex-col items-center gap-4 sm:flex-row sm:justify-between sm:gap-8">
+        <Link
+          href="https://aureus-gamma.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 rounded-full bg-orange py-2 pl-6 pr-2 text-sm font-bold text-white transition-all duration-300 hover:gap-4"
+        >
+          View More Web Projects
+          <ArrowDot dark />
+        </Link>
+
+        <Link
+          href="https://www.behance.net/masudadeiza1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 rounded-full border border-black/15 bg-white px-6 py-2 text-sm font-bold transition-all duration-300 hover:gap-4"
+        >
+          View More Design Projects
+          <ArrowDot   />
+        </Link>
+      </div>
       </section>
 
       {/* Process */}

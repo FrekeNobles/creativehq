@@ -39,7 +39,7 @@ export const projects = [
         img('pc-screen-1.jpg'),
       ],
   },
-    client: 'Pulsegrid', role: 'Positioning, Product Design, Frontend', timeline: '14 weeks',
+    client: 'Pulsegrid', role: 'Positioning, Product Design, Frontend', timeline: '6 weeks',
     challenge: 'Pulsegrid’s platform was powerful, but first-time users could not tell what it did or where to start. Demos took an hour, and trials stalled before the first insight.',
     approach: [
       { t: 'Reframe the story', d: 'We rewrote positioning around one decision the product helps leaders make, not a list of features.' },
@@ -62,7 +62,7 @@ export const projects = [
         img('office-2.png'),
       ],
   },
-    client: 'Marlowe & Stein Advisory', role: 'Brand Strategy, Identity, Web', timeline: '12 weeks',
+    client: 'Marlowe & Stein Advisory', role: 'Brand Strategy, Identity, Web', timeline: '6 weeks',
     challenge: 'The firm advised on cross-border deals but looked like every other consultancy online. Partners were spending discovery calls proving credentials that the website should have established.',
     approach: [
       { t: 'Find the voice', d: 'Partner interviews shaped a calm, precise tone of voice that reads as confident rather than promotional.' },

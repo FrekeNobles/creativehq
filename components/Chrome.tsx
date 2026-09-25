@@ -25,19 +25,19 @@ export function Nav() {
   }, [path]);
 
   const active =
-    path !== '/'
+  path.startsWith('/work')
+    ? 'Work'
+    : path !== '/'
       ? ''
       : hash === '#services'
         ? 'Services'
         : hash === '#work'
           ? 'Work'
-           : hash === 'work'
-            ? 'Work'
-            : hash === '#about'
-              ? 'About Us'
-              : hash === '#contact'
-                ? 'Contact'
-                : 'Home';
+          : hash === '#about'
+            ? 'About Us'
+            : hash === '#contact'
+              ? 'Contact'
+              : 'Home';
 
   const cls = (l: string) =>
     `rounded-full px-4 py-2 text-[13px] font-semibold ${

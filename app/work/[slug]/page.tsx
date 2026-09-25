@@ -33,10 +33,10 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           ))}
         </dl>
         <img
-  src={p.caseStudyImages.hero}
-  alt={p.title}
-  className="mt-10 aspect-[16/9] w-full rounded-3xl object-cover"
-/>
+          src={p.caseStudyImages.hero}
+          alt={p.title}
+          className="mt-10 aspect-[16/9] w-full rounded-t-3xl object-cover"
+        />
       </section>
 
       <section className="wrap mt-16 grid gap-8 lg:mt-24 lg:grid-cols-[1fr_2fr] lg:gap-16">
