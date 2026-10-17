@@ -10,7 +10,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const p = projects.find((x) => x.slug === params.slug);
-  return { title: p ? `${p.title} — CreativeHQ Case Study` : 'Case Study — CreativeHQ' };
+  return { title: p ? `${p.title} — solvyn247 Case Study` : 'Case Study — solvyn247' };
 }
 
 export default function CaseStudy({ params }: { params: { slug: string } }) {
@@ -94,7 +94,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           <p className="text-[10px] font-bold uppercase tracking-[.15em] text-white/60">Have a similar problem?</p>
           <div className="mt-3 flex flex-col justify-between gap-7 sm:flex-row sm:items-end">
             <h2 className="display max-w-2xl text-4xl font-bold leading-[.92] sm:text-5xl">Let&apos;s build the digital experience your business needs.</h2>
-            <a href="mailto:creativehq@gmail.com" className="inline-flex w-fit items-center gap-2 rounded-full bg-purple px-5 py-3 text-[11px] font-bold transition-all duration-300 hover:gap-4">
+            <a href="mailto:solvyn247@gmail.com" className="inline-flex w-fit items-center gap-2 rounded-full bg-purple px-5 py-3 text-[11px] font-bold transition-all duration-300 hover:gap-4">
           Start a conversation 
           <ArrowUpRight size={13} />
           </a>

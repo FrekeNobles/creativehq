@@ -1,6 +1,9 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import type { LucideIcon } from 'lucide-react';
+import CountUp from '@/components/CountUp';
+import { useEffect, useRef, useState } from "react";
 import { Award, ThumbsUp, Star, Globe, Compass, LayoutGrid, TrendingUp, Code2, ArrowRight, ArrowUpRight, CheckCircle2, Target, Search, Mail, Zap } from 'lucide-react';
 import { projects, picture } from '@/lib/data';
 
@@ -45,23 +48,55 @@ const ArrowDot = ({ dark = false }: { dark?: boolean }) => (
   <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-white ${dark ? 'bg-purple' : 'bg-orange'}`}><ArrowUpRight size={14} /></span>
 );
 
+
+
 export default function Home() {
+  const statsRef = useRef<HTMLElement>(null);
+const [startAnimation, setStartAnimation] = useState(false);
+
+
+useEffect(() => {
+  const section = statsRef.current;
+
+  if (!section) return;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      setStartAnimation(entry.isIntersecting);
+    },
+    { threshold: 0.3 }
+  );
+
+  observer.observe(section);
+
+  return () => observer.disconnect();
+}, []);
+
   return (
     <main>
       {/* Hero */}
       <section className="mx-auto mt-2 grid max-w-[1440px] items-center gap-6 pl-5 sm:pl-10 lg:grid-cols-[1.15fr_1fr] lg:pl-[76px]">
-        <div className="pr-5 pt-8 lg:pr-0 lg:pt-0">
-          <h1 className="text-[40px] font-extrabold leading-[1.05] tracking-tight sm:text-[52px] lg:text-[64px]">
-            We turn business problems into <span className="text-orange">digital experiences</span> that move people into action.
-          </h1>
-          <p className="mt-6 max-w-[520px] text-[15px] leading-relaxed text-ink/70">
-            We help ambitious businesses build stronger brands, clearer websites and high-converting digital products — backed by strategy, user experience and rigorous commercial thinking.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="#work" className="flex items-center gap-3 rounded-full bg-orange py-2 pl-6 pr-2 text-sm font-bold text-white transition-all duration-300 hover:gap-4 ">View Selected Work <ArrowDot dark /></Link>
-            <Link href="#contact" className="flex items-center gap-2 rounded-full border border-black/15 bg-white px-6 py-2 text-sm font-bold transition-all duration-300 hover:gap-4 ">Start a conversation <ArrowUpRight size={14} className='text-orange' /></Link>
-          </div>
+        
+      <div className="pr-5 pt-8 text-center lg:pr-0 lg:pt-0 lg:text-left">
+        <h1 className="text-[40px] font-extrabold leading-[1.05] tracking-tight sm:text-[52px] lg:text-[64px]">
+          We turn business problems into <span className="text-orange">digital experiences</span> that move people into action.
+        </h1>
+
+        <p className="mx-auto mt-6 max-w-[520px] text-[15px] leading-relaxed text-ink/70 lg:mx-0">
+          We help ambitious businesses build stronger brands, clearer websites and high-converting digital products — backed by strategy, user experience and rigorous commercial thinking.
+        </p>
+
+        <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
+          <Link href="#work" className="flex items-center gap-3 rounded-full bg-orange py-2 pl-6 pr-2 text-sm font-bold text-white transition-all duration-300 hover:gap-4">
+            View Selected Work <ArrowDot dark />
+          </Link>
+
+          <Link href="#contact" className="flex items-center gap-2 rounded-full border border-black/15 bg-white px-6 py-3 text-sm font-bold transition-all duration-300 hover:gap-4">
+            Start a conversation <ArrowUpRight size={14} className="text-orange" />
+          </Link>
         </div>
+      </div>
+
        <div className="relative h-[420px] overflow-hidden rounded-tl-[80px] border-l-4 border-t-4 border-orange sm:h-[560px] lg:mt-28 lg:h-[740px] lg:rounded-tl-[180px]"> 
         <img src="images/heroimage.png" alt="Designer working on a laptop" className="h-full w-full object-cover" /> 
         <div className="absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-t from-[#FAF8F4] via-white/75 to-transparent" /> 
@@ -69,15 +104,24 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section className="wrap relative z-10 -mt-12 grid grid-cols-2 gap-6 rounded-3xl border border-orange bg-sun p-6 lg:-mt-20 lg:grid-cols-4 lg:p-8">
-        {stats.map(([Icon, n, l]) => (
-          <div key={l} className="flex flex-col items-center text-center">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-white text-orange"><Icon size={16} /></span>
-            <p className="mt-2 text-3xl font-extrabold text-purple sm:text-4xl">{n}</p>
-            <p className="text-xs font-medium text-ink/60">{l}</p>
-          </div>
-        ))}
-      </section>
+      <section
+  ref={statsRef}
+  className="wrap relative z-10 -mt-12 grid grid-cols-2 gap-6 rounded-3xl border border-orange bg-sun p-6 lg:-mt-20 lg:grid-cols-4 lg:p-8"
+>
+  {stats.map(([Icon, n, l]) => (
+    <div key={l} className="flex flex-col items-center text-center">
+      <span className="grid h-9 w-9 place-items-center rounded-full bg-white text-orange">
+        <Icon size={16} />
+      </span>
+
+      <p className="mt-2 text-3xl font-extrabold text-purple sm:text-4xl">
+        <CountUp value={n} startAnimation={startAnimation} />
+      </p>
+
+      <p className="text-xs font-medium text-ink/60">{l}</p>
+    </div>
+  ))}
+</section>
 
       {/* What we do */}
       <section id="services" className="wrap mt-16 rounded-[28px] bg-purple p-6 sm:p-10 lg:mt-24 lg:p-14">
@@ -316,7 +360,7 @@ export default function Home() {
 
           <div className="flex shrink-0 flex-col items-start gap-3 sm:items-end">
             <a
-              href="mailto:creativehq@gmail.com"
+              href="mailto:solvyn247@gmail.com"
               className="flex w-fit items-center gap-3 rounded-full bg-purple py-2 pl-6 pr-2 text-sm font-bold transition-all duration-300 hover:gap-4"
             >
               Let&apos;s Discuss Your Project

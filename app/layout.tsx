@@ -6,7 +6,7 @@ import { Nav, Footer } from '@/components/Chrome';
 const font = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta' });
 
 export const metadata: Metadata = {
-  title: 'CreativeHQ — Digital experiences that move people into action',
+  title: 'Solvyn — Digital experiences that move people into action',
   description: 'Brand, product design, commercial growth and frontend build for ambitious businesses.',
 };
 

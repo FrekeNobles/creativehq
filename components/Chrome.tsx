@@ -9,8 +9,8 @@ const links = [['Home', '/'], ['Services', '/#services'], ['Work', '/#work'], ['
 export function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link href="/" className="flex items-center gap-2 text-[17px] font-extrabold">
-      <span className="grid h-8 w-8 place-items-center rounded-full bg-orange text-sm text-white">C</span>
-      <span className={light ? 'text-white' : 'text-purple'}>CreativeHQ.</span>
+      <span className="grid h-8 w-8 place-items-center rounded-full bg-orange text-sm text-white">S</span>
+      <span className={light ? 'text-white' : 'text-purple'}>Solvyn.</span>
     </Link>
   );
 }
@@ -131,11 +131,11 @@ export function Footer() {
         <div>
           <h4 className="text-xs font-bold uppercase tracking-widest text-white/50">Direct Contact</h4>
           <p className="mt-4 text-sm leading-relaxed text-white/80">Initiate an executive strategic review or RFP discussion.</p>
-          <a href="mailto:creativehq@gmail.com" className="mt-3 inline-block text-sm font-semibold text-orange">creativehq@gmail.com</a>
+          <a href="mailto:solvyn247@gmail.com" className="mt-3 inline-block text-sm font-semibold text-orange">solvyn247@gmail.com</a>
         </div>
       </div>
       <div className="mx-auto flex max-w-[1186px] flex-col gap-3 border-t border-white/10 px-5 py-6 text-xs text-white/50 sm:flex-row sm:justify-between">
-        <p>© 2026 CreativeHQ Studio. All Rights Reserved.</p>
+        <p>© 2026 Solvyn Studio. All Rights Reserved.</p>
         <div className="flex gap-6"><span>Privacy Policy</span><span>Terms of Service</span><span>Legal Notice</span></div>
       </div>
     </footer>
